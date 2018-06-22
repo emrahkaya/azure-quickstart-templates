@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "publicIPDnsName": {
+      "value": "buildagent-vm-220618a"
+    },
+    "vmAdminUser": {
+      "value": "emrahAdmin"
+    },
+    "vstsAccount": {
+      "value": "deepnetwork"
+    },
+    "vmAdminPassword": {
+      "value": "Asdfgh.123456"
+    },
+    "vstsAgentCount": {
+      "value": 2
+    },
+    "vstsPersonalAccessToken": {
+      "value": "x6pckxyodijmrculolr26ee4rugb3merv7ugyry4p76bks2e5lga"
+    },
+    "vstsPoolName": {
+      "value": "BuilderPool"
+    }
+  }
+}
