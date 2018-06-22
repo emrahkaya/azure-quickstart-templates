@@ -7,28 +7,7 @@
 Param
 (
 	[Parameter(Mandatory=$true)]
-	[string]$VSTSAccount,
-
-	[Parameter(Mandatory=$true)]
-	[string]$PersonalAccessToken,
-
-	[Parameter(Mandatory=$true)]
-	[string]$AgentName,
-
-	[Parameter(Mandatory=$true)]
-	[string]$PoolName,
-
-	[Parameter(Mandatory=$true)]
-	[int]$AgentCount,
-
-	[Parameter(Mandatory=$true)]
-	[string]$AdminUser,
-
-	[Parameter(Mandatory=$true)]
-	[switch]$WillUpdateModules,
-
-	[Parameter(Mandatory=$true)]
-	[array]$Modules
+	[string]$AgentName
 )
 $VerbosePreference = "Continue"
 
@@ -73,12 +52,17 @@ Write-Verbose "Current folder: $currentLocation"
 #} 
 #while ($retries -le $retryCount)
 #
-for ($i=0; $i -lt $AgentCount; $i++)
+for ($i=0; $i -lt 10; $i++)
 {
 	$Agent = ($AgentName + "-" + $i)
 
 	# Construct the agent folder under the main (hardcoded) C: drive.
 	$agentInstallationPath = Join-Path "C:" $Agent
+
+	if (!(Test-Path -Path $agentInstallationPath))
+	{
+		continue;
+	}
 
 	# Create the directory for this agent.
 	#New-Item -ItemType Directory -Force -Path $agentInstallationPath
@@ -148,4 +132,4 @@ for ($i=0; $i -lt $AgentCount; $i++)
 #	Write-Verbose "Modules' update complete."
 #}
 
-Write-Verbose "Exiting InstallVSTSAgent.ps1"
+Write-Verbose "Exiting UninstallVSTSAgent.ps1"
