@@ -54,6 +54,7 @@ Write-Verbose "Current folder: $currentLocation"
 #
 for ($i=0; $i -lt 10; $i++)
 {
+try{
 	$Agent = ($AgentName + "-" + $i)
 
 	# Construct the agent folder under the main (hardcoded) C: drive.
@@ -96,6 +97,10 @@ for ($i=0; $i -lt 10; $i++)
 	Write-Verbose "Agent install output: $LASTEXITCODE"
 	
 	Pop-Location
+	}catch
+	{
+		Write-Verbose "Catched error, continue"
+	}
 }
 
 #if ($WillUpdateModules)
